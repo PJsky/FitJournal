@@ -1,0 +1,23 @@
+.main-content {
+  background: #ff9e5c;
+  width: 96vw;
+  height: 80vh;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-content .side-panel {
+  background: indigo;
+  width: 24%;
+  border-radius: 5%;
+}
+/*# sourceMappingURL=main-content.css.map */

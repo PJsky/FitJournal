@@ -1,0 +1,12 @@
+.left-side-panel{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .side-panel-card{
+
+        width: 100%;
+        height: 40%;
+        background: greenyellow;
+    }
+}

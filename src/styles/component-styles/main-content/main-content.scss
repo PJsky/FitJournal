@@ -1,0 +1,22 @@
+@import '../colors.scss';
+
+.main-content{
+    background: $highlight-color;
+    width: 96vw;
+    height: 80vh;
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+
+    .side-panel{
+        background: indigo;
+        width: 24%;
+        border-radius: 5%;
+    }
+
+    
+
+}

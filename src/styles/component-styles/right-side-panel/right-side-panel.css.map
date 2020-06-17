@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACb,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "right-side-panel.scss"
+    ],
+    "names": [],
+    "file": "right-side-panel.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAA;EACZ,OAAO,EAAC,IAAI;EACZ,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,aAAa;CAQjC;;AAXD,AAKI,gBALY,CAKZ,gBAAgB,CAAA;EAEZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,WAAW;CAC1B",
+    "sources": [
+        "left-side-panel.scss"
+    ],
+    "names": [],
+    "file": "left-side-panel.css"
+}
