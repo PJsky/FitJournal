@@ -1,0 +1,32 @@
+.right-side-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 91%;
+  background: #ffffff;
+  border: 1px solid black;
+}
+
+.right-side-panel .right-side-panel-bar {
+  height: 40px;
+  background: black;
+  color: white;
+  padding-top: 5%;
+}
+
+.right-side-panel .right-side-panel-bar p {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 22px;
+  font-weight: 800;
+}
+/*# sourceMappingURL=right-side-panel.css.map */

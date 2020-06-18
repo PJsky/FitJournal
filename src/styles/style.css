@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+@import './component-styles/nav/nav.css';
+@import './component-styles/left-side-panel/left-side-panel.css';
+@import './component-styles/main-content/main-content.css';
+@import './component-styles/main-panel/main-panel.css';
+@import './component-styles/right-side-panel/right-side-panel.css';
+

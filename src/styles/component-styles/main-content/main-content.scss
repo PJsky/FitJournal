@@ -1,0 +1,45 @@
+@import '../colors.scss';
+
+main{
+    display:grid;
+}
+
+.main-content{
+    max-width: 1300px;
+    min-width: 340px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "left-panel main-panel main-panel right-panel"
+    "left-panel    main-panel main-panel right-panel";
+    column-gap: 20px;
+
+    /*@media (max-width: 1120px) {
+        grid-template-columns: 1fr 650px 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        "0 main-panel"
+        "0 main-panel"
+        "0 right-panel"
+        "0 left-panel";
+    }*/
+    
+    .main-panel{
+        grid-area: main-panel;
+    }
+
+    .left-side-panel{
+
+        grid-area: left-panel;
+    }
+
+    .right-side-panel{
+        grid-area: right-panel;
+    }
+
+    
+
+}
