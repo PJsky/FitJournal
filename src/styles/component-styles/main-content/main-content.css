@@ -1,3 +1,8 @@
+.App-no-overflow {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 main {
   display: -ms-grid;
   display: grid;
@@ -6,6 +11,7 @@ main {
 .main-content {
   max-width: 1300px;
   min-width: 340px;
+  min-height: 650px;
   margin: auto;
   display: -ms-grid;
   display: grid;
@@ -13,7 +19,7 @@ main {
       grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      grid-template-areas: "left-panel main-panel main-panel right-panel" "left-panel    main-panel main-panel right-panel";
+      grid-template-areas: "left-panel main-panel main-panel right-panel" "left-panel main-panel main-panel right-panel";
   -webkit-column-gap: 20px;
           column-gap: 20px;
   /*@media (max-width: 1120px) {

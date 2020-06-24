@@ -1,5 +1,6 @@
 .main-panel {
   height: 76.6vh;
+  min-height: 600px;
   margin-bottom: 3.4vh;
   background: #ffffff;
   display: -webkit-box;
@@ -31,6 +32,11 @@
   font-size: 19px;
   font-weight: 600;
   font-family: Roboto, Helvatica, Arial;
+}
+
+.main-panel .main-panel-button-bar li:hover {
+  cursor: pointer;
+  color: #01c352;
 }
 
 .main-panel .journal-page {

@@ -1,10 +1,10 @@
-import counterReducer from './counter';
-import loggedReducer from './isLogged';
+import calendarReducers from './calendar';
+import mainPanelReducers from './main-panel';
 import {combineReducers} from 'redux';
 
 const allReducers = combineReducers({
-    counter: counterReducer,
-    isLogged: loggedReducer
+    ...calendarReducers,
+    ...mainPanelReducers
 });
 
 export default allReducers;

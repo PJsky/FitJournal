@@ -1,74 +1,19 @@
 import React from 'react';
 import './styles/style.css';
-import {useSelector, useDispatch} from 'react-redux';
-import {increment, decrement} from './actions';
 import Nav from './components/Nav';
+import Main_content from './components/Main_content';
+import {useSelector} from 'react-redux';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 
 function App() {
-  const counter = useSelector(state => state.counter);
-  const isLogged = useSelector(state => state.isLogged);
-  const dispatch = useDispatch();
+  const modalState = useSelector(state => state.modalState)
 
   return (
-    <div className="App">
+    <div className={modalState!="hidden"? "App App-no-overflow":"App"}>   
       <Nav> </Nav>
-        <section className="main-content">
-          <div className="side-panel left-side-panel">
-            <div className="side-panel-card calendar">
-              <div className="calendar-bar">
-                <p>Calendar</p>
-              </div>
-              <div className="calendar-body"></div>
-            </div>
-            <div className="side-panel-card calorie-graph">
-              <div className="calorie-graph-bar">
-                <p>Calorie Graph</p>
-              </div>
-              <div className="calorie-graph-body"></div>
-            </div>
-          </div>
-          <main className="main-panel">
-            <ul className="main-panel-button-bar">
-              <li>+ Food</li>
-              <li>+ Biometric</li>
-              <li>+ Note</li>
-            </ul>
-            <div className="journal-page">
-              <table className="journal-day">
-                <tr>
-                  <th> Description</th>
-                  <th> Amount</th>
-                  <th> Calories</th>
-                </tr>
-                <tr>
-                  <td> Description</td>
-                  <td> Amount</td>
-                  <td> Calories</td>
-                </tr>
-                <tr>
-                  <td> Description</td>
-                  <td> Amount</td>
-                  <td> Calories</td>
-                </tr>
-
-              </table>
-            
-              <h1>Counter: {counter}</h1>
-              <button  onClick={() => dispatch(increment(2))}>+</button>
-              <button  onClick={() => dispatch(decrement(2))}>-</button>
-              {isLogged ? <h3>Logged</h3> : ''}
-            </div>
-           
-          </main>
-          <div className="side-panel right-side-panel">
-            <div className="right-side-panel-bar">
-                <p>Daily Summary</p>
-              </div>
-            <div className="calorie-ring"></div>
-            <div className="calorie-bars"></div>
-          </div>
-        </section>
+      <Main_content/>
     </div>
   );
 }

@@ -1,0 +1,165 @@
+.calendar {
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+  font-weight: bold;
+}
+
+.calendar .calendar-body-hidden {
+  display: none;
+}
+
+.calendar .calendar-upper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.calendar .calendar-upper .calendar-month-year-text, .calendar .calendar-upper .calendar-year-text {
+  padding: 5% 5%;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Roboto';
+  color: #01c352;
+}
+
+.calendar .calendar-upper .calendar-month-year-text:hover {
+  cursor: pointer;
+}
+
+.calendar .calendar-upper .calendar-month-arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5%;
+}
+
+.calendar .calendar-upper .calendar-month-arrows img {
+  width: 100%;
+  height: auto;
+}
+
+.calendar .calendar-upper .calendar-month-arrows #reversed-arrow {
+  margin-left: 3%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.calendar .calendar-upper .calendar-month-arrows img:hover {
+  background: #5af199;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.calendar .calendar-body {
+  height: 80%;
+  background: #ffffff;
+  text-align: center;
+  display: block;
+}
+
+.calendar .calendar-body .calendar-week-days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 5%;
+  font-family: 'Roboto Mono';
+  color: #01c352;
+}
+
+.calendar .calendar-body .calendar-month {
+  margin: auto;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 1% 0;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .calendar-day, .calendar .calendar-body .calendar-month .calendar-week .calendar-day-off {
+  text-align: center;
+  font-family: 'Roboto Mono';
+  font-size: 80%;
+  padding: 2%;
+  margin: 0;
+  border-radius: 50%;
+  width: 4%;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .calendar-day .calendar-day-text, .calendar .calendar-body .calendar-month .calendar-week .calendar-day-off .calendar-day-text {
+  width: 100%;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .calendar-day {
+  border: 1.25px solid #01c352;
+  color: #01c352;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .calendar-day:hover {
+  background-color: #82f8b39d;
+  cursor: pointer;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .calendar-day-off {
+  border: 1.25px solid grey;
+  color: grey;
+  opacity: 50%;
+}
+
+.calendar .calendar-body .calendar-month .calendar-week .chosen-day {
+  background: #01c352 !important;
+  color: white;
+}
+
+.calendar .calendar-months {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 80%;
+  margin-top: 22px;
+  color: #01c352;
+}
+
+.calendar .calendar-months .calendar-months-chosen-month {
+  background: #01c352;
+  color: white;
+}
+
+.calendar .calendar-months .calendar-months-chosen-month, .calendar .calendar-months .calendar-months-month {
+  width: 15%;
+  text-align: center;
+  padding: 4% 7%;
+  margin: 1% 0;
+  border: 1px solid #01c352;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.calendar .calendar-months .calendar-months-chosen-month .calendar-months-month-text, .calendar .calendar-months .calendar-months-month .calendar-months-month-text {
+  width: 100%;
+}
+
+.calendar .calendar-months .calendar-months-month:hover {
+  color: #01c352;
+  border: 1px solid #01c352;
+  background-color: #5af199;
+}
+/*# sourceMappingURL=calendar.css.map */

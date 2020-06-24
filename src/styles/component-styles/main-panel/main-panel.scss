@@ -2,11 +2,13 @@
 
 .main-panel{
     height: 76.6vh;
+    min-height: 600px;
     margin-bottom: 3.4vh;
     background: $background-color;
     display: flex;
     flex-direction: column;
-
+    //remove later
+    //display: none;
 
     .main-panel-button-bar{
         
@@ -24,6 +26,10 @@
             font-weight: 600;
             font-family: $text-family;
 
+            &:hover{
+                cursor: pointer;
+                color: $main-green;
+            }
         }
     }
 
