@@ -1,12 +1,10 @@
 @import '../colors.scss';
 
 .main-panel{
-    height: 76.6vh;
-    min-height: 600px;
-    margin-bottom: 3.4vh;
     background: $background-color;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     //remove later
     //display: none;
 

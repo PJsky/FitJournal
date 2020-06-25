@@ -9,9 +9,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: auto;
-  margin-bottom: auto;
-  height: 96%;
 }
 
 .left-side-panel .side-panel-card {

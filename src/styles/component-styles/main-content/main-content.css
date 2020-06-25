@@ -1,6 +1,6 @@
 .App-no-overflow {
   height: 100vh;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 main {
@@ -11,7 +11,6 @@ main {
 .main-content {
   max-width: 1300px;
   min-width: 340px;
-  min-height: 650px;
   margin: auto;
   display: -ms-grid;
   display: grid;
@@ -22,6 +21,7 @@ main {
       grid-template-areas: "left-panel main-panel main-panel right-panel" "left-panel main-panel main-panel right-panel";
   -webkit-column-gap: 20px;
           column-gap: 20px;
+  padding: 60px;
   /*@media (max-width: 1120px) {
         grid-template-columns: 1fr 650px 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;

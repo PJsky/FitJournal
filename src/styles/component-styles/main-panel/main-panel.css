@@ -1,7 +1,4 @@
 .main-panel {
-  height: 76.6vh;
-  min-height: 600px;
-  margin-bottom: 3.4vh;
   background: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10,6 +7,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .main-panel .main-panel-button-bar {
@@ -36,7 +36,7 @@
 
 .main-panel .main-panel-button-bar li:hover {
   cursor: pointer;
-  color: #01c352;
+  color: #00C853;
 }
 
 .main-panel .journal-page {
