@@ -4,6 +4,7 @@ import {set_modal_food,set_modal_biometric,set_modal_note,set_modal_hidden} from
 import Food_modal from './Main_panel/Modals/Food_modal';
 import Biometric_modal from './Main_panel/Modals/Biometric_modal';
 import Note_modal from './Main_panel/Modals/Note_modal';
+import axios from 'axios';
 
 
 export default function Main_panel(){
@@ -26,24 +27,34 @@ export default function Main_panel(){
             <li onClick={() => dispatch(set_modal_note())}>+ Note</li>
         </ul>
         <div className="journal-page">
-            <table className="journal-day">
-                <tr>
-                <th> Description</th>
-                <th> Amount</th>
-                <th> Calories</th>
-                </tr>
-                <tr>
-                <td> Description</td>
-                <td> Amount</td>
-                <td> Calories</td>
-                </tr>
-                <tr>
-                <td> Description</td>
-                <td> Amount</td>
-                <td> Calories</td>
-                </tr>
+            <div className="journal-page-table">
+                <div className="journal-page-table-row">
+                    <div className="journal-page-table-col"> Description</div>
+                    <div className="journal-page-table-col">Amount</div>
+                    <div className="journal-page-table-col">kcal</div>
+                </div>
+                <div className="journal-page-table-row">
+                    <div className="journal-page-table-col"> Description</div>
+                    <div className="journal-page-table-col">Amount</div>
+                    <div className="journal-page-table-col">kcal</div>
+                </div>
+                <div className="journal-page-table-row">
+                    <div className="journal-page-table-col"> Description</div>
+                    <div className="journal-page-table-col">Amount</div>
+                    <div className="journal-page-table-col">kcal</div>
+                </div>
+                <div className="journal-page-table-row">
+                    <div className="journal-page-table-col"> Description</div>
+                    <div className="journal-page-table-col">Amount</div>
+                    <div className="journal-page-table-col">kcal</div>
+                </div>
+                <div className="journal-page-table-row">
+                    <div className="journal-page-table-col"> Description</div>
+                    <div className="journal-page-table-col">Amount</div>
+                    <div className="journal-page-table-col">kcal</div>
+                </div>
+            </div>
 
-            </table>
         </div>
 
         </main>
@@ -68,3 +79,4 @@ const getModal = (modalState) =>{
         )
     return modal;
 }
+

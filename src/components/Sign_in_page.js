@@ -1,5 +1,4 @@
 import React from 'react';
-import BackgroundSVG from '../images/main_page_background.svg'; 
 import {Link} from 'react-router-dom';
 
 export default function Sign_in_page(){          

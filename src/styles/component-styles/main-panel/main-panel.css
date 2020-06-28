@@ -44,32 +44,51 @@
   border: 1px solid black;
 }
 
-.main-panel .journal-page .journal-day {
-  font-family: Roboto, Helvatica, Arial;
-  font-size: 16px;
-  font-weight: 500;
+.main-panel .journal-page .journal-page-table {
   width: 100%;
-  border-collapse: collapse;
-  border-radius: 10px;
-  margin-top: 10px;
+  display: table;
+  border-spacing: 0px;
+  border-bottom: 1px solid #ccc;
 }
 
-.main-panel .journal-page .journal-day tr {
-  height: 18px;
-  width: 100%;
+.main-panel .journal-page .journal-page-table .journal-page-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.main-panel .journal-page .journal-day td, .main-panel .journal-page .journal-day th {
-  border: 1px solid #999999;
-  padding: 12px 8px;
-  text-align: left;
+.main-panel .journal-page .journal-page-table .journal-page-table-row:nth-child(even) {
+  background: #f0f0f0;
 }
 
-.main-panel .journal-page .journal-day th {
-  background-color: #dddddd;
+.main-panel .journal-page .journal-page-table .journal-page-table-row:first-child {
+  background-color: #00C853;
+  border-radius: 3px 3px 0 0;
+  color: white;
+  font-weight: bold;
 }
 
-.main-panel .journal-page .journal-day td {
-  background-color: #ffffff;
+.main-panel .journal-page .journal-page-table .journal-page-table-row:first-child:hover {
+  cursor: default;
+  background-color: #00C853;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:last-child {
+  border-bottom: 1px solid black;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:hover {
+  background: #d3d3d3;
+  cursor: pointer;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-col {
+  float: left;
+  /* fix for  buggy browsers */
+  display: table-column;
+  width: 33.3%;
+  text-align: center;
+  padding: 6px 0;
 }
 /*# sourceMappingURL=main-panel.css.map */

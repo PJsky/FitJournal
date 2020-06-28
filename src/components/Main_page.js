@@ -1,5 +1,4 @@
 import React from 'react';
-import BackgroundSVG from '../images/main_page_background.svg'; 
 import {link, Link} from 'react-router-dom';
 
 

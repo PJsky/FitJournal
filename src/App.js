@@ -18,10 +18,10 @@ function App() {
       <div className={modalState!="hidden"? "App App-no-overflow":"App"}>   
         <Nav> </Nav>
         <Switch>
+          <Route path="/content" exact component={Main_content}/>
           <Route path="/signin" exact component={Sign_in_page}/>
           <Route path="/" exact component={Main_page}/>
           <Route path="/signup" exact component={Sign_up_page}/>
-          <Route path="/content" exact component={Main_content}/>
         </Switch>
       </div>
     </Router>
