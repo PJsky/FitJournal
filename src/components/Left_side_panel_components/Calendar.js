@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import CalendarArrow from '../../images/calendar-arrow.svg'; 
 import {set_month, increment_month, decrement_month, set_day_of_year,set_calendar_months,set_calendar_days, increment_year, decrement_year} from '../../actions/calendar.js';
+import axios from 'axios';
 
 export default function Calendar(){     
     const calendarState = useSelector(state => state.calendarYearAndMonth);
     const chosenDay = useSelector(state => state.calendarDayOfYear);
     const menuState = useSelector(state => state.calendarMenuState) 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month}-${chosenDay.day}`)
+        .then(({data}) => {
+            console.log(data);
+        })
+    })
     
     return(
         <div className="side-panel left-side-panel">
@@ -59,10 +67,10 @@ const getDays = (dispatch, currentYear, currentMonth, chosenDay) =>{
     for(let i=0; i<nrOfDays;i++){
         days.push(
             <span className={
-                i==chosenDay.day && currentMonth == chosenDay.month && currentYear == chosenDay.year ? 'chosen-day calendar-day' : 'calendar-day'
+                i+1==chosenDay.day && currentMonth == chosenDay.month && currentYear == chosenDay.year ? 'chosen-day calendar-day' : 'calendar-day'
              }
              onClick={()=>dispatch(set_day_of_year({
-                day: i,
+                day: i+1,
                 month: currentMonth,
                 year: currentYear
             }))}>{i+1}</span>

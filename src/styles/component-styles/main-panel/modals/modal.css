@@ -38,6 +38,7 @@
   display: inline-block;
   position: relative;
   background: #fff;
+  width: 50vw;
   border-radius: 5px;
   font-family: Roboto;
 }
@@ -58,6 +59,13 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.modal-content .food-modal .food-modal-search form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .modal-content .food-modal .food-modal-search .food-modal-search-input, .modal-content .food-modal .food-modal-search .food-modal-search-button {
@@ -92,6 +100,12 @@
 
 .modal-content .food-modal .food-modal-search .food-modal-search-button:focus {
   outline: none;
+}
+
+.modal-content .food-modal .food-modal-table-container {
+  display: block;
+  overflow: auto;
+  max-height: 450px;
 }
 
 .modal-content .food-modal .food-modal-table {

@@ -31,6 +31,7 @@
      display: inline-block;
      position: relative;
      background: #fff;   
+     width: 50vw;
      //min-height: 300px;
      //max-height: 600px;
      border-radius: 5px;
@@ -46,6 +47,10 @@
         }
 
         .food-modal-search{
+            form{
+                width: 100%;
+                display:flex;
+            }
             display: flex;
             margin: 18px 33px;
             justify-content: space-between;
@@ -83,6 +88,11 @@
             }
         }
 
+        .food-modal-table-container{
+            display: block;
+            overflow: auto;
+            max-height: 450px;
+        }
         .food-modal-table{
             width:100%;
             display: table;
