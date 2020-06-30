@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import { set_fetched_food } from '../../../actions/fetched-food';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {set_chosen_food} from '../../../actions/chosenFood';
+import {set_chosen_day_journal} from '../../../actions/chosenDayJournal';
 
 function Food_modal() {
     const fetchedFood = useSelector(state => state.fetchedFood);
     const chosenDay = useSelector(state => state.calendarDayOfYear);
     const chosenFood = useSelector(state => state.chosenFood);
+    const chosenDayJournal = useSelector(state => state.chosenDayJournal);
     const dispatch = useDispatch();
 
     return (
@@ -64,7 +66,9 @@ function Food_modal() {
 
                         </div>
                         <button className="food-modal-bottom-add-button"
-                        onClick={()=>postFoodToDay(chosenFood)}>Add</button>
+                        onClick={()=>{postFoodToDay(chosenFood);
+                            getJournalDayAfterPost(dispatch,chosenDay);
+                        }}>Add</button>
                     </div>
 
                 </div>
@@ -80,7 +84,8 @@ function Food_modal() {
             <div className="food-modal-table-row" onClick={()=>dispatch(set_chosen_food(saveFoodToDay(fetchedFood[food], chosenDay)))}>
                 <div className="food-modal-table-col"> {fetchedFood[food].description}</div>
                 <div className="food-modal-table-col">{fetchedFood[food].householdServingFullText || fetchedFood[food].foodPortions[0].portionDescription || Math.floor(fetchedFood[food].inputFoods.map(ingredient => ingredient.ingredientWeight).reduce((weight, ingedientAmount)=>weight+ingedientAmount))+"g" }</div> 
-                <div className="food-modal-table-col">{fetchedFood[food].foodNutrients[fetchedFood[food].foodNutrients.length -1].amount}</div>
+                {/* <div className="food-modal-table-col">{fetchedFood[food].foodNutrients[fetchedFood[food].foodNutrients.length -1].amount}</div> */}
+                <div className="food-modal-table-col">api failed</div>
             </div>
         )
         return table;
@@ -128,5 +133,15 @@ function Food_modal() {
             });
         })
     }
+
+    
+    const getJournalDayAfterPost = (dispatch,chosenDay) => {
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day}T00:00:00.000Z`)
+        .then(({data}) => {
+            //console.log(data);
+            dispatch(set_chosen_day_journal(data))
+        })
+    }
+
 
 export default Food_modal;

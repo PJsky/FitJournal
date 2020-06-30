@@ -9,13 +9,6 @@ export default function Calendar(){
     const chosenDay = useSelector(state => state.calendarDayOfYear);
     const menuState = useSelector(state => state.calendarMenuState) 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month}-${chosenDay.day}`)
-        .then(({data}) => {
-            console.log(data);
-        })
-    })
     
     return(
         <div className="side-panel left-side-panel">

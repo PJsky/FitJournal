@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {set_modal_food,set_modal_biometric,set_modal_note,set_modal_hidden} from '../actions/modal';
+import {set_chosen_day_journal} from '../actions/chosenDayJournal';
 import Food_modal from './Main_panel/Modals/Food_modal';
 import Biometric_modal from './Main_panel/Modals/Biometric_modal';
 import Note_modal from './Main_panel/Modals/Note_modal';
@@ -9,7 +10,17 @@ import axios from 'axios';
 
 export default function Main_panel(){
     const modalState = useSelector(state => state.modalState)
+    const chosenDay = useSelector(state => state.calendarDayOfYear);
+    const chosenDayJournal = useSelector(state => state.chosenDayJournal);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day}T00:00:00.000Z`)
+        .then(({data}) => {
+            //console.log(data);
+            dispatch(set_chosen_day_journal(data))
+        })
+    },[chosenDay])
 
     return(
         <main className="main-panel">
@@ -33,26 +44,7 @@ export default function Main_panel(){
                     <div className="journal-page-table-col">Amount</div>
                     <div className="journal-page-table-col">kcal</div>
                 </div>
-                <div className="journal-page-table-row">
-                    <div className="journal-page-table-col"> Description</div>
-                    <div className="journal-page-table-col">Amount</div>
-                    <div className="journal-page-table-col">kcal</div>
-                </div>
-                <div className="journal-page-table-row">
-                    <div className="journal-page-table-col"> Description</div>
-                    <div className="journal-page-table-col">Amount</div>
-                    <div className="journal-page-table-col">kcal</div>
-                </div>
-                <div className="journal-page-table-row">
-                    <div className="journal-page-table-col"> Description</div>
-                    <div className="journal-page-table-col">Amount</div>
-                    <div className="journal-page-table-col">kcal</div>
-                </div>
-                <div className="journal-page-table-row">
-                    <div className="journal-page-table-col"> Description</div>
-                    <div className="journal-page-table-col">Amount</div>
-                    <div className="journal-page-table-col">kcal</div>
-                </div>
+                {createTable(chosenDayJournal[0])}
             </div>
 
         </div>
@@ -78,5 +70,20 @@ const getModal = (modalState) =>{
             <Note_modal/>
         )
     return modal;
+}
+
+const createTable = (fetchedJournalDay) => {
+    let table = [];
+    try{console.log(fetchedJournalDay.foods)
+        for(let food in fetchedJournalDay.foods)
+        table.push(
+            <div className="journal-page-table-row">
+                <div className="journal-page-table-col">{fetchedJournalDay.foods[food].description}</div>
+                <div className="journal-page-table-col">100g</div> 
+                <div className="journal-page-table-col">100</div>
+            </div>
+        )
+    }catch(e){}
+    return table;
 }
 
