@@ -1,7 +1,8 @@
 @import "../colors.scss";
 
 .sign-up-page{
-    padding: 60px;
+    padding-top: 20vh;
+
 }
 
 .sign-up-page-card{
@@ -35,6 +36,7 @@
     }
 
     .sign-up-page-label{
+        display: block;
         padding: 6px 2px;
         width: 100%;
         font-size: 16px;
@@ -46,6 +48,7 @@
     }
 
     .sign-up-page-button{
+        display: block;
         border: 1.30px solid $main-green;
         border-radius: 5px;
         padding: 2% 0%;

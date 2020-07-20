@@ -1,7 +1,7 @@
 .navigation-bar {
   height: 72px;
   width: 100%;
-  position: relative;
+  position: absolute;
   z-index: 999;
   border-color: #00C853;
   display: -webkit-box;
@@ -19,7 +19,6 @@
 
 .navigation-bar .site-logo {
   margin: auto;
-  margin-right: 40%;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-align: center;
@@ -49,6 +48,7 @@
 }
 
 .navigation-bar ul .navigation-sign-in {
+  cursor: pointer;
   border: solid 2px #ff9e5c;
   color: #ff9e5c;
   font-weight: 900;

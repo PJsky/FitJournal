@@ -1,7 +1,8 @@
 @import "../colors.scss";
 
 .sign-in-page{
-    padding: 60px;
+    display:block;
+    padding-top: 20vh;
 }
 
 .sign-in-page-card{
@@ -25,7 +26,7 @@
         color: $main-green;
         padding: 16px 0px;
     }
-
+    
     .sign-in-page-input{
         padding: 8px;
         border: 1.30px solid black;
@@ -35,6 +36,7 @@
     }
 
     .sign-in-page-label{
+        display: block;
         padding: 6px 2px;
         width: 100%;
         font-size: 16px;
@@ -46,6 +48,7 @@
     }
 
     .sign-in-page-button{
+        display:block;
         border: 1.30px solid $main-green;
         border-radius: 5px;
         padding: 2% 0%;

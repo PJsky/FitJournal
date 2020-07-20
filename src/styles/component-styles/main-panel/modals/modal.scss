@@ -37,6 +37,9 @@
      //max-height: 600px;
      border-radius: 5px;
      font-family: Roboto;
+     max-height: 82vh;
+     overflow-x: hidden;
+     overflow-y: auto;
      
 
         .food-modal-header{
@@ -92,16 +95,55 @@
         .food-modal-table-container{
             display: block;
             overflow: auto;
-            max-height: 450px;
+            max-height: 420px;
+
+            
         }
         .food-modal-table{
             width:100%;
             display: table;
             border-spacing: 0px;
             border-bottom: 1px solid #ccc;
+            
+            .food-modal-loading-container{
+                overflow-y: hidden;;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                height: 20vh;
+                background: #00000033;
+                .food-modal-loading{
+                    margin: auto;
+                    border: 16px solid #f3f3f3;
+                    border-radius: 50%;
+                    border-top: 16px solid $main-green;
+                    width: 10vh;
+                    height: 10vh;
+                    -webkit-animation: spin 2s linear infinite; /* Safari */
+                    animation: spin 2s linear infinite;
+                }
+                @keyframes loading {
+                    from{background: #00000000}
+                    50%{background: #000000ff}
+                    to{background: #00000000}
+                }
+                @-webkit-keyframes spin {
+                    0% { -webkit-transform: rotate(0deg); }
+                    100% { -webkit-transform: rotate(360deg); }
+                }
+                
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                .food-modal-loading-hidden{display:none;}
+            }
+            
 
             .food-modal-table-row{
-                display: table-row;
+                //display: table-row;
+                display:flex;
                 width: auto;
                 clear: both;
                 font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -130,6 +172,10 @@
                     background: #d3d3d3;
                     cursor: pointer;
                 }
+
+            }
+            .food-modal-table-row-chosen{
+                background: #c3c3c3 !important;
             }
             .food-modal-table-col{
                 float: left; /* fix for  buggy browsers */
@@ -137,30 +183,80 @@
                 width: 33.3%;
                 text-align: center;
                 padding: 6px 0;
-            }
 
+                &:last-child{
+                    width:33.4%;
+                }
+                .food-modal-table-delete{
+                    background:red;
+                    width: 2px;
+                    height: 100%;
+                }
+            }
         }
 
         .food-modal-bottom{
             display:flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            justify-content: center;
         
             .food-modal-bottom-nutrition{
-                height: 10vh;
-                width: 60%;
-                background-color: $main-green;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                 width: 70%;
+                padding: 0 1%;
+                font-family: Roboto,Arial;
+                font-weight: bold;
+                text-align: center;
+                // background-color: $main-green;
+                
+                .food-modal-doughnut{
+                    width:100%;
+                    height:100%;
+                    box-sizing: border-box;
+                    padding:16px 0;
+                    // margin: 0 -15% !important;
+                    .food-modal-doughnut-container{
+                        // height: 50%;
+                        width: 100%;
+                        padding-top: 2.5%;
+                        canvas{
+                            width: 100% !important;
+                            height: 100% !important;
+                        }
+                    }
+                }
+
+                .food-modal-bars{
+                    // width:100%;
+                    height:100%;
+                    .food-modal-bars-container{
+                        // width: 90%;
+                        // height: 50%;
+                        padding: 24px;
+                        // padding-top: 2.5%;
+                        canvas{
+                            width: 100% !important;
+                            height: 50% !important;
+                        }
+                    }
+                }
             }
 
             .food-modal-bottom-add{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 flex-wrap: wrap;
                 font-family: Roboto;
-                margin-right: 33px;
+                margin: 0 33px;
+                min-height: 56px;
 
 
                 .food-modal-bottom-add-input{
                     display: flex;
                     justify-content: flex-end;
-                    width: 100%;
                     padding: 18px 0;
 
                     input{
@@ -183,7 +279,7 @@
                     font-weight: bold;
                     color: white;
                     float: right;
-                    margin-bottom: 18px;
+                    // margin-bottom: 18px;
                     -webkit-box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);
                     -moz-box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);
                     box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);

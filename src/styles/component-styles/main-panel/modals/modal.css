@@ -42,6 +42,9 @@
   min-width: 260px;
   border-radius: 5px;
   font-family: Roboto;
+  max-height: 82vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .modal-content .food-modal .food-modal-header {
@@ -106,7 +109,7 @@
 .modal-content .food-modal .food-modal-table-container {
   display: block;
   overflow: auto;
-  max-height: 450px;
+  max-height: 420px;
 }
 
 .modal-content .food-modal .food-modal-table {
@@ -116,8 +119,87 @@
   border-bottom: 1px solid #ccc;
 }
 
+.modal-content .food-modal .food-modal-table .food-modal-loading-container {
+  overflow-y: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 20vh;
+  background: #00000033;
+}
+
+.modal-content .food-modal .food-modal-table .food-modal-loading-container .food-modal-loading {
+  margin: auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #00C853;
+  width: 10vh;
+  height: 10vh;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes loading {
+  from {
+    background: #00000000;
+  }
+  50% {
+    background: #000000ff;
+  }
+  to {
+    background: #00000000;
+  }
+}
+
+@keyframes loading {
+  from {
+    background: #00000000;
+  }
+  50% {
+    background: #000000ff;
+  }
+  to {
+    background: #00000000;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.modal-content .food-modal .food-modal-table .food-modal-loading-container .food-modal-loading-hidden {
+  display: none;
+}
+
 .modal-content .food-modal .food-modal-table .food-modal-table-row {
-  display: table-row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: auto;
   clear: both;
   font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -148,6 +230,10 @@
   cursor: pointer;
 }
 
+.modal-content .food-modal .food-modal-table .food-modal-table-row-chosen {
+  background: #c3c3c3 !important;
+}
+
 .modal-content .food-modal .food-modal-table .food-modal-table-col {
   float: left;
   /* fix for  buggy browsers */
@@ -157,25 +243,92 @@
   padding: 6px 0;
 }
 
+.modal-content .food-modal .food-modal-table .food-modal-table-col:last-child {
+  width: 33.4%;
+}
+
+.modal-content .food-modal .food-modal-table .food-modal-table-col .food-modal-table-delete {
+  background: red;
+  width: 2px;
+  height: 100%;
+}
+
 .modal-content .food-modal .food-modal-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition {
-  height: 10vh;
-  width: 60%;
-  background-color: #00C853;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70%;
+  padding: 0 1%;
+  font-family: Roboto,Arial;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-doughnut {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 16px 0;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-doughnut .food-modal-doughnut-container {
+  width: 100%;
+  padding-top: 2.5%;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-doughnut .food-modal-doughnut-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-bars {
+  height: 100%;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-bars .food-modal-bars-container {
+  padding: 24px;
+}
+
+.modal-content .food-modal .food-modal-bottom .food-modal-bottom-nutrition .food-modal-bars .food-modal-bars-container canvas {
+  width: 100% !important;
+  height: 50% !important;
 }
 
 .modal-content .food-modal .food-modal-bottom .food-modal-bottom-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   font-family: Roboto;
-  margin-right: 33px;
+  margin: 0 33px;
+  min-height: 56px;
 }
 
 .modal-content .food-modal .food-modal-bottom .food-modal-bottom-add .food-modal-bottom-add-input {
@@ -185,7 +338,6 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  width: 100%;
   padding: 18px 0;
 }
 
@@ -208,7 +360,6 @@
   font-weight: bold;
   color: white;
   float: right;
-  margin-bottom: 18px;
   -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
 }

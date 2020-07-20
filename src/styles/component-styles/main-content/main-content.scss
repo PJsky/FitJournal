@@ -13,7 +13,6 @@ main{
     max-width: 1300px;
     min-width: 340px;
     margin: auto;
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -21,29 +20,65 @@ main{
     "left-panel main-panel main-panel right-panel"
     "left-panel main-panel main-panel right-panel";
     column-gap: 20px;
+    row-gap: 20px;
     padding: 60px;
+    position: relative;
+    top:72px;
+    padding-top: 6vh;
 
-    /*@media (max-width: 1120px) {
-        grid-template-columns: 1fr 650px 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    @media (max-width: 1120px) {
+         padding:8px;
+         grid-template-columns: 25rem 25rem;
+         grid-template-rows: 1fr 1fr;
+         grid-template-areas: 
+         "main-panel main-panel"
+         "left-panel right-panel";
+         justify-content: center;
+     }
+
+     @media (max-width: 750px){
+        padding:8px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         grid-template-areas: 
-        "0 main-panel"
-        "0 main-panel"
-        "0 right-panel"
-        "0 left-panel";
-    }*/
+        "main-panel left-panel"
+        "right-panel right-panel";
+        
+     }
+
+    @media (max-width: 750px) {
+         padding:8px;
+         grid-template-columns: 1fr;
+         grid-template-rows: 1fr 1fr 1fr;
+         grid-template-areas: 
+         "main-panel"
+         "left-panel"
+         "right-panel";
+         justify-items: center;
+         .side-panel, .journal-page{
+            width: 25rem;
+         }
+     }
+     @media(max-width: 400px){
+         .calendar, .side-panel, .journal-page{
+            width: 20rem !important;
+            height: 20rem !important;
+         }
+     }
     
     .main-panel{
         grid-area: main-panel;
     }
 
     .left-side-panel{
-
+        height: 100%;
         grid-area: left-panel;
     }
 
     .right-side-panel{
         grid-area: right-panel;
+        padding-top: 16px;
     }
 
        

@@ -21,16 +21,58 @@ main {
       grid-template-areas: "left-panel main-panel main-panel right-panel" "left-panel main-panel main-panel right-panel";
   -webkit-column-gap: 20px;
           column-gap: 20px;
+  row-gap: 20px;
   padding: 60px;
-  /*@media (max-width: 1120px) {
-        grid-template-columns: 1fr 650px 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: 
-        "0 main-panel"
-        "0 main-panel"
-        "0 right-panel"
-        "0 left-panel";
-    }*/
+  position: relative;
+  top: 72px;
+  padding-top: 6vh;
+}
+
+@media (max-width: 1120px) {
+  .main-content {
+    padding: 8px;
+    -ms-grid-columns: 25rem 25rem;
+        grid-template-columns: 25rem 25rem;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "main-panel main-panel" "left-panel right-panel";
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .main-content {
+    padding: 8px;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "main-panel left-panel" "right-panel right-panel";
+  }
+}
+
+@media (max-width: 750px) {
+  .main-content {
+    padding: 8px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "main-panel" "left-panel" "right-panel";
+    justify-items: center;
+  }
+  .main-content .side-panel, .main-content .journal-page {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-content .calendar, .main-content .side-panel, .main-content .journal-page {
+    width: 20rem !important;
+    height: 20rem !important;
+  }
 }
 
 .main-content .main-panel {
@@ -42,6 +84,7 @@ main {
 }
 
 .main-content .left-side-panel {
+  height: 100%;
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
@@ -53,5 +96,6 @@ main {
   -ms-grid-row-span: 2;
   -ms-grid-column: 4;
   grid-area: right-panel;
+  padding-top: 16px;
 }
 /*# sourceMappingURL=main-content.css.map */

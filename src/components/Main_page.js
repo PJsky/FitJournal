@@ -18,14 +18,14 @@ export default function Main_page(){
                     </div>
                 </div>
             </div>
-            <div className="main-page-features">
+            {/* <div className="main-page-features">
                 <div className="main-page-features-header">
                     <h2 >Features</h2>
                 </div>
                 <section className="main-page-features-feature"></section>
                 <section className="main-page-features-feature"></section>
                 <section className="main-page-features-feature"></section>
-            </div>
+            </div> */}
         </div>
     )
 }

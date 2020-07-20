@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import { set_fetched_food } from '../../../actions/fetched-food';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {set_chosen_food} from '../../../actions/chosenFood';
 import {set_chosen_day_journal} from '../../../actions/chosenDayJournal';
+import {Doughnut,HorizontalBar} from 'react-chartjs-2';
+
 
 function Food_modal() {
     const fetchedFood = useSelector(state => state.fetchedFood);
@@ -12,6 +14,32 @@ function Food_modal() {
     const chosenFood = useSelector(state => state.chosenFood);
     const chosenDayJournal = useSelector(state => state.chosenDayJournal);
     const dispatch = useDispatch();
+
+    const [loading,setLoading] = useState(false);
+
+    //NEEDED FOR CHART JS
+    const [chartData,setChartData] = useState({
+        
+        labels: ['Protein', 'Carbohydrates', 'Fats'],
+        datasets:[{label:'population',data:[61759,181045,153060],
+        backgroundColor:["rgba(255,0,0,0.6)","rgba(0,0,255,0.6)","rgba(0,255,0,0.6)"]}]
+      }
+    );
+    const [data, setData] = useState([0,0,0]);
+    const [label, setLabel] = useState('calories');
+    const [chartLabel, setChartLabel] = useState(['Protein', 'Carbohydrates', 'Fats']);
+    const [colors, setColors] = useState(["rgba(255,0,0,0.6)","rgba(0,0,255,0.6)","rgba(0,255,0,0.6)","rgba(0,255,255,0.6)"]);
+    
+    useEffect(()=>{
+        if(chosenFood.protein) {
+            setData([chosenFood.protein*4,chosenFood.carbohydrates*4,chosenFood.fat*9])
+            setChartLabel([`Protein: ${chosenFood.protein}g`,`Carbohydrates: ${chosenFood.carbohydrates}g`,`Fat: ${chosenFood.fat}g`])
+        }
+        else setData([0,0,0])
+    },[chosenFood])
+    
+    
+    /////////////////////////////////////////
 
     return (
         <div className="food-modal">
@@ -21,10 +49,9 @@ function Food_modal() {
                 <Formik
                 initialValues={{ searchFood:'' }}
                 onSubmit={(values, { setSubmitting }) => {
+                    setLoading(true);
                     setTimeout(() => {
-                    console.log(values['searchFood']);
-                    fetchFoodData(dispatch, values['searchFood']);
-                    setSubmitting(false);
+                    fetchFoodData(dispatch, values['searchFood'], setSubmitting, setLoading);
                     }, 400);
                 }}
                 >
@@ -38,8 +65,6 @@ function Food_modal() {
                     </Form>
                 )}
                 </Formik>
-                {/* <input type="text" className="food-modal-search-input"></input>
-                <button className="food-modal-search-button" onClick={()=>fetchFoodData(dispatch)}>Search</button> */}
                 </div>
                 <div className="food-modal-table-container">
                     <div className="food-modal-table">
@@ -48,13 +73,19 @@ function Food_modal() {
                             <div className="food-modal-table-col">Amount</div>
                             <div className="food-modal-table-col">kcal</div>
                         </div>
-                        {createTable(fetchedFood,chosenDay,dispatch)}
+                        <div className={loading?"food-modal-loading-container":"food-modal-loading-hidden"}>
+                            <div className={loading?"food-modal-loading":"food-modal-loading-hidden"}></div>
+                        </div>
+                        {!loading?createTable(fetchedFood,chosenDay,chosenFood,dispatch):""}
                     </div>
                 </div>
                 <div className="food-modal-bottom">
-                    <div className="food-modal-bottom-nutrition"></div>
+                    <div className="food-modal-bottom-nutrition">
+                        {getChart(chartData,data,chartLabel,label,colors)}
+                        {/* ///////////////////////////// */}
+                    </div>
                     <div className="food-modal-bottom-add">
-                        <div className="food-modal-bottom-add-input">
+                        {/* <div className="food-modal-bottom-add-input">
                             Amount:
                             <input type="text"></input> 
                             <select>
@@ -64,10 +95,10 @@ function Food_modal() {
                                 <option value="3">kg</option>
                             </select>
 
-                        </div>
+                        </div> */}
                         <button className="food-modal-bottom-add-button"
-                        onClick={()=>{postFoodToDay(chosenFood);
-                            getJournalDayAfterPost(dispatch,chosenDay);
+                        onClick={()=>{postFoodToDay(dispatch,chosenFood,chosenDay);
+                            //getJournalDayAfterPost(dispatch,chosenDay);
                         }}>Add</button>
                     </div>
 
@@ -77,17 +108,19 @@ function Food_modal() {
         );
     }
 
-    const createTable = (fetchedFood,chosenDay,dispatch) => {
+    const createTable = (fetchedFood,chosenDay,chosenFood,dispatch) => {
         let table = [];
         for(let food in fetchedFood)
+        try{
         table.push(
-            <div className="food-modal-table-row" onClick={()=>dispatch(set_chosen_food(saveFoodToDay(fetchedFood[food], chosenDay)))}>
+            <div 
+             className={JSON.stringify(saveFoodToDay(fetchedFood[food], chosenDay)) == JSON.stringify(chosenFood)? "food-modal-table-row food-modal-table-row-chosen": "food-modal-table-row"}
+             onClick={()=>dispatch(set_chosen_food(saveFoodToDay(fetchedFood[food], chosenDay)))}>
                 <div className="food-modal-table-col"> {fetchedFood[food].description}</div>
                 <div className="food-modal-table-col">{fetchedFood[food].householdServingFullText || fetchedFood[food].foodPortions[0].portionDescription || Math.floor(fetchedFood[food].inputFoods.map(ingredient => ingredient.ingredientWeight).reduce((weight, ingedientAmount)=>weight+ingedientAmount))+"g" }</div> 
-                {/* <div className="food-modal-table-col">{fetchedFood[food].foodNutrients[fetchedFood[food].foodNutrients.length -1].amount}</div> */}
-                <div className="food-modal-table-col">api failed</div>
+                <div className="food-modal-table-col">{fetchedFood[food].foodNutrients[fetchedFood[food].foodNutrients.length -1].amount}</div>
             </div>
-        )
+        )}catch(e){}
         return table;
     }
 
@@ -95,7 +128,10 @@ function Food_modal() {
         const foodToSave = {
             description: food.description,
             amount: 1,
-            calories: food.foodNutrients[food.foodNutrients.length -1].amount
+            calories: food.foodNutrients[food.foodNutrients.length -1].amount,
+            protein: food.foodNutrients[0].amount,
+            carbohydrates: food.foodNutrients[2].amount,
+            fat: food.foodNutrients[1].amount
         };
         return foodToSave;
     }
@@ -106,20 +142,21 @@ function Food_modal() {
             dayDate: new Date(chosenDay.year,chosenDay.month-1,chosenDay.day+1),
             ...foodToSave
         }
-        console.log(day);
         return day;
     }
 
-    const postFoodToDay = (dayToPost) => {
-        console.log(dayToPost);
-        axios.post("http://localhost:3030/foods", dayToPost)
+    const postFoodToDay = (dispatch,dayToPost,chosenDay) => {
+        axios.post("http://localhost:3030/foods", dayToPost, {
+            headers:{
+                'auth-token' : localStorage.getItem("token")
+            }
+        })
         .then(response=>{
-            console.log(response);
+            getJournalDayAfterPost(dispatch,chosenDay);
         })
     }
 
-    const fetchFoodData = (dispatch, fetchedFoodName) => {
-        console.log("data here:")
+    const fetchFoodData = (dispatch, fetchedFoodName, setSubmitting, setLoading) => {
         axios.get(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=wGktXjAGmU4BOV6Skdgke8Dg13ur5LV6zrB1jr6L&query=${fetchedFoodName}&pageSize=10&dataType=Survey (FNDDS)`)
         .then(response => {
             let fdcid_string = '';
@@ -127,21 +164,70 @@ function Food_modal() {
                 fdcid_string+=`&fdcIds=${response.data[item].fdcId}`
             axios.get(`https://api.nal.usda.gov/fdc/v1/foods?api_key=wGktXjAGmU4BOV6Skdgke8Dg13ur5LV6zrB1jr6L${fdcid_string}&nutrients=208&nutrients=203&nutrients=204&nutrients=205`)
             .then(({data}) =>{
-                console.log(data);
-                console.log(data.map(x=>x.foodNutrients[x.foodNutrients.length-1]))
                 dispatch(set_fetched_food(data));
+                setSubmitting(false);
+                setLoading(false);
             });
         })
     }
 
     
     const getJournalDayAfterPost = (dispatch,chosenDay) => {
-        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day}T00:00:00.000Z`)
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day.toString().padStart(2, "0")}T00:00:00.000Z`, {
+            headers:{
+                'auth-token' : localStorage.getItem("token")
+            }
+        })
         .then(({data}) => {
-            //console.log(data);
             dispatch(set_chosen_day_journal(data))
         })
     }
+
+    const getChart = (chartData,data,chartLabel,label,colors) => {
+        const sData = JSON.stringify(data);
+        const sNoFoodChosen = JSON.stringify([0,0,0]);
+        if(sData!=sNoFoodChosen)
+        return(
+                        <div className="food-modal-bars">
+                            <div className="food-modal-bars-container">
+                                            <HorizontalBar
+                                data={{...chartData,
+                                labels:chartLabel,    
+                                datasets:[{
+                                label:label,
+                                data:data,
+                                backgroundColor:colors,
+                                }]}}
+                                options={{maintainAspectRatio:false,
+                                legend: {
+                                display: false // hides the legend
+                                },
+                                tooltips: {
+                                enabled: true, // hides the tooltip.
+                                
+                                },
+                                scales: {
+                                xAxes: [{
+                                    display: false, // hides the horizontal scale
+                                    stacked: true // stacks the bars on the x axis
+                                }],
+                                yAxes: [{
+                                    display: false, // hides the vertical scale
+                                    stacked: true // stacks the bars on the y axis
+                                }],
+                                responsive: true
+                                }}}
+                                />
+                            </div>
+                        </div>
+        )
+        else
+        return(
+            <p>No Food Chosen</p>
+        )
+    }
+    
+    
 
 
 export default Food_modal;
