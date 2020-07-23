@@ -1,5 +1,112 @@
 .main-panel {
-  width: 50%;
-  background: grey;
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 260px;
+}
+
+.main-panel .main-panel-button-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 28px;
+  background: #ffffff;
+}
+
+.main-panel .main-panel-button-bar li {
+  list-style: none;
+  font-size: 19px;
+  font-weight: 600;
+  font-family: Roboto, Helvatica, Arial;
+}
+
+.main-panel .main-panel-button-bar li:hover {
+  cursor: pointer;
+  color: #00C853;
+}
+
+.main-panel .journal-page {
+  height: 100%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+}
+
+.main-panel .journal-page .journal-page-table {
+  width: 100%;
+  display: table;
+  border-spacing: 0px;
+  border-bottom: 1px solid #ccc;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  clear: both;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:nth-child(even) {
+  background: #f0f0f0;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:first-child {
+  background-color: #00C853;
+  border-radius: 3px 3px 0 0;
+  color: white;
+  font-weight: bold;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:first-child:hover {
+  cursor: default;
+  background-color: #00C853;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-row:hover {
+  background: #d3d3d3;
+  cursor: pointer;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-col {
+  float: left;
+  /* fix for  buggy browsers */
+  display: table-column;
+  width: 33.3%;
+  text-align: center;
+  padding: 6px 0;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-delete {
+  float: right;
+  display: table-column;
+  background: red;
+  color: white;
+  font-size: 8px;
+  font-family: Roboto,Arial;
+  font-weight: bold;
+  text-align: center;
+  padding: 3px;
+  margin-top: -3px;
+}
+
+.main-panel .journal-page .journal-page-table .journal-page-table-delete:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=main-panel.css.map */

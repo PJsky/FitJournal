@@ -1,3 +1,61 @@
+@import '../colors.scss';
+
 .right-side-panel{
-    background: grey;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $background-color;
+    webkit-box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);
+    box-shadow: 0px 1px 2px 2px rgba(0,0,0,0.14);
+
+    .right-side-panel-bar{
+        height: $panel-bar-height;
+        color: $main-green;        
+        p{
+            text-align: center;
+            vertical-align: middle;
+            font-family: "Roboto";
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+    }
+    
+}
+.calorie-no-food{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    height:100%;
+    animation: fadeLoad 1s;
+}
+.calorie-summary{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height:100%;
+
+    .calorie-summary-doughnut-container{
+        box-sizing: border-box;
+        width:100%;
+        margin: auto;
+        .chartjs-render-monitor{
+            // width: 100% !important; 
+            //  height: 30% !important;
+        }
+    }
+    .calorie-summary-bars-container{
+        width:60%;
+        height: 50%;
+        margin: auto;
+    }
+}
+
+@keyframes fadeLoad{
+    from{opacity:0;}
+    to{opacity:100%;}
 }

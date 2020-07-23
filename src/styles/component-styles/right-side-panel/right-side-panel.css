@@ -1,4 +1,95 @@
 .right-side-panel {
-  background: grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #ffffff;
+  webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+          box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.14);
+}
+
+.right-side-panel .right-side-panel-bar {
+  height: 40px;
+  color: #00C853;
+}
+
+.right-side-panel .right-side-panel-bar p {
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.calorie-no-food {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  height: 100%;
+  -webkit-animation: fadeLoad 1s;
+          animation: fadeLoad 1s;
+}
+
+.calorie-summary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.calorie-summary .calorie-summary-doughnut-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+}
+
+.calorie-summary .calorie-summary-bars-container {
+  width: 60%;
+  height: 50%;
+  margin: auto;
+}
+
+@-webkit-keyframes fadeLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 /*# sourceMappingURL=right-side-panel.css.map */

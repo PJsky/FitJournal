@@ -1,6 +1,20 @@
+*{
+  padding: 0;
+  margin:0;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+}
+
 @import './component-styles/nav/nav.css';
+@import './component-styles/left-side-panel/left-side-panel.css';
+@import './component-styles/main-page/main-page.css';
+@import './component-styles/sign-in-page/sign-in-page.css';
+@import './component-styles/sign-up-page/sign-up-page.css';
 @import './component-styles/main-content/main-content.css';
 @import './component-styles/main-panel/main-panel.css';
-@import './component-styles/left-side-panel/left-side-panel.css';
+@import './component-styles/main-panel/modals/modal.css';
 @import './component-styles/right-side-panel/right-side-panel.css';
- 
+@import './component-styles/left-side-panel/calendar/calendar.css';
