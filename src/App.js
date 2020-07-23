@@ -34,11 +34,7 @@ function App() {
         }
     }).bind(this));
 
-<<<<<<< HEAD
   const modalState = useSelector(state => state.modalState);
-=======
-  const modalState = useSelector(state => state.modalState)
->>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
   const isLogged = useSelector(state => state.user);
   return (
     <Router>
