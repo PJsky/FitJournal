@@ -1,7 +1,11 @@
 .navigation-bar {
   height: 72px;
   width: 100%;
+<<<<<<< HEAD
   position: relative;
+=======
+  position: absolute;
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
   z-index: 999;
   border-color: #00C853;
   display: -webkit-box;
@@ -19,7 +23,10 @@
 
 .navigation-bar .site-logo {
   margin: auto;
+<<<<<<< HEAD
   margin-right: 40%;
+=======
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-align: center;

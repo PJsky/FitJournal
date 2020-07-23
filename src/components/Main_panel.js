@@ -7,8 +7,11 @@ import Food_modal from './Main_panel/Modals/Food_modal';
 import Biometric_modal from './Main_panel/Modals/Biometric_modal';
 import Note_modal from './Main_panel/Modals/Note_modal';
 import axios from 'axios';
+<<<<<<< HEAD
 // const BACKEND = "http://localhost:3030";
 const BACKEND = "https://fit-journal-back.herokuapp.com";
+=======
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
 
 
 export default function Main_panel(){
@@ -20,7 +23,11 @@ export default function Main_panel(){
     const [reloadFoods,setReloadFoods] = useState(0);
 
     useEffect(() => {
+<<<<<<< HEAD
         axios.get(`${BACKEND}/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day.toString().padStart(2, "0")}T00:00:00.000Z`,
+=======
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day.toString().padStart(2, "0")}T00:00:00.000Z`,
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
         {
             headers:{
                 'auth-token' : localStorage.getItem("token")
@@ -49,9 +56,15 @@ export default function Main_panel(){
             </div>
 
         <ul className="main-panel-button-bar">
+<<<<<<< HEAD
             <li onClick={() => dispatch(set_modal_food())}>+ Add Food</li>
             {/* <li onClick={() => dispatch(set_modal_biometric())}>+ Biometric</li>
             <li onClick={() => dispatch(set_modal_note())}>+ Note</li> */}
+=======
+            <li onClick={() => dispatch(set_modal_food())}>+ Food</li>
+            <li onClick={() => dispatch(set_modal_biometric())}>+ Biometric</li>
+            <li onClick={() => dispatch(set_modal_note())}>+ Note</li>
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
         </ul>
         <div className="journal-page">
             <div className="journal-page-table">
@@ -110,7 +123,11 @@ const createTable = (fetchedJournalDay,reloadFoods,setReloadFoods) => {
 const deleteFood = (foodId, dayDate, reloadFoods, setReloadFoods) =>{
     // dayDate="";
     console.log(`id:${foodId}, dayDate:${dayDate}`);
+<<<<<<< HEAD
     axios.delete(BACKEND+ "/foods", {data:{
+=======
+    axios.delete("http://localhost:3030/foods", {data:{
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
         dayDate:dayDate,
         id:foodId
     },

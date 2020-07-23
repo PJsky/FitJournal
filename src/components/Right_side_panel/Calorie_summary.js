@@ -26,9 +26,15 @@ function Calorie_summary() {
         const protein = todaysMacros.map(x=>x.protein).reduce((sum,x)=>sum+x);
         const carbohydrates = todaysMacros.map(x=>x.carbohydrates).reduce((sum,x)=>sum+x);
         const fat = todaysMacros.map(x=>x.fat).reduce((sum,x)=>sum+x);
+<<<<<<< HEAD
         setData([Math.round(protein*4),Math.round(carbohydrates*4),Math.round(fat*9),Math.round(protein*4+carbohydrates*4+fat*9)])
         setDoughnutData([protein*4,carbohydrates*4,fat*9])
         setChartLabel([`Protein: ${Math.round(protein)}g`,`Carbohydrates: ${Math.round(carbohydrates)}g`,`Fat: ${Math.round(fat)}g`])
+=======
+        setData([protein*4,carbohydrates*4,fat*9,(protein*4+carbohydrates*4+fat*9)])
+        setDoughnutData([protein*4,carbohydrates*4,fat*9])
+        setChartLabel([`Protein: ${protein}g`,`Carbohydrates: ${carbohydrates}g`,`Fat: ${fat}g`])
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
       }catch(e){setData([0,0,0])}
     }
     useEffect(changeMacros,[dayJournal])

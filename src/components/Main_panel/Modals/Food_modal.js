@@ -6,8 +6,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {set_chosen_food} from '../../../actions/chosenFood';
 import {set_chosen_day_journal} from '../../../actions/chosenDayJournal';
 import {Doughnut,HorizontalBar} from 'react-chartjs-2';
+<<<<<<< HEAD
 // const BACKEND = "http://localhost:3030";
 const BACKEND = "https://fit-journal-back.herokuapp.com";
+=======
+
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
 
 function Food_modal() {
     const fetchedFood = useSelector(state => state.fetchedFood);
@@ -33,8 +37,13 @@ function Food_modal() {
     
     useEffect(()=>{
         if(chosenFood.protein) {
+<<<<<<< HEAD
             setData([Math.round(chosenFood.protein*4),Math.round(chosenFood.carbohydrates*4),Math.round(chosenFood.fat*9)])
             setChartLabel([`Protein: ${Math.round(chosenFood.protein)}g`,`Carbohydrates: ${Math.round(chosenFood.carbohydrates)}g`,`Fat: ${Math.round(chosenFood.fat)}g`])
+=======
+            setData([chosenFood.protein*4,chosenFood.carbohydrates*4,chosenFood.fat*9])
+            setChartLabel([`Protein: ${chosenFood.protein}g`,`Carbohydrates: ${chosenFood.carbohydrates}g`,`Fat: ${chosenFood.fat}g`])
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
         }
         else setData([0,0,0])
     },[chosenFood])
@@ -147,7 +156,11 @@ function Food_modal() {
     }
 
     const postFoodToDay = (dispatch,dayToPost,chosenDay) => {
+<<<<<<< HEAD
         axios.post(BACKEND+"/foods", dayToPost, {
+=======
+        axios.post("http://localhost:3030/foods", dayToPost, {
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
             headers:{
                 'auth-token' : localStorage.getItem("token")
             }
@@ -174,7 +187,11 @@ function Food_modal() {
 
     
     const getJournalDayAfterPost = (dispatch,chosenDay) => {
+<<<<<<< HEAD
         axios.get(`${BACKEND}/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day.toString().padStart(2, "0")}T00:00:00.000Z`, {
+=======
+        axios.get(`http://localhost:3030/days/${chosenDay.year}-${chosenDay.month.toString().padStart(2, "0")}-${chosenDay.day.toString().padStart(2, "0")}T00:00:00.000Z`, {
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
             headers:{
                 'auth-token' : localStorage.getItem("token")
             }

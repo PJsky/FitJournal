@@ -4,8 +4,11 @@ import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import {log_in} from '../actions/auth';
+<<<<<<< HEAD
 // const BACKEND = "http://localhost:3030";
 const BACKEND = "https://fit-journal-back.herokuapp.com";
+=======
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
 
 export default function Sign_in_page(){       
     const dispatch = useDispatch();
@@ -40,7 +43,11 @@ export default function Sign_in_page(){
                     setTimeout(() => {
                     console.log(values['email']);
                     console.log(values['password']);
+<<<<<<< HEAD
                     axios.post(BACKEND+"/user/login", {
+=======
+                    axios.post("http://localhost:3030/user/login", {
+>>>>>>> c6295110f8bfb572bab2223061fa8d058b3d82d3
                         email: values['email'],
                         password: values['password']
                     }).then(({data,status})=>{
