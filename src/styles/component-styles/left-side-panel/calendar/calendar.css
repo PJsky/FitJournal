@@ -118,7 +118,7 @@
 .calendar .calendar-body .calendar-month .calendar-week .calendar-day-off {
   border: 1.25px solid grey;
   color: grey;
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .calendar .calendar-body .calendar-month .calendar-week .chosen-day {

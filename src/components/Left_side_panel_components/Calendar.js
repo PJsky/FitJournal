@@ -61,7 +61,7 @@ const getDays = (dispatch, currentYear, currentMonth, chosenDay) =>{
         days.push(
             <span className={
                 i+1==chosenDay.day && currentMonth == chosenDay.month && currentYear == chosenDay.year ? 'chosen-day calendar-day' : 'calendar-day'
-             }
+                }
              onClick={()=>dispatch(set_day_of_year({
                 day: i+1,
                 month: currentMonth,
