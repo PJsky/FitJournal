@@ -31,7 +31,7 @@ export default function Main_panel(){
             dispatch(set_chosen_day_journal(data));
             dispatch(log_in());
         }, (error) => {
-            console.log("log out")
+            // console.log("log out")
             dispatch(log_out());
         });
     },[chosenDay, reloadFoods])
@@ -92,7 +92,8 @@ const getModal = (modalState) =>{
 
 const createTable = (fetchedJournalDay,reloadFoods,setReloadFoods) => {
     let table = [];
-    try{console.log(fetchedJournalDay.foods)
+    try{
+        // console.log(fetchedJournalDay.foods)
         for(let food in fetchedJournalDay.foods)
         table.push(
             <div className="journal-page-table-row" onClick={()=>deleteFood(fetchedJournalDay.foods[food]._id,fetchedJournalDay.date,reloadFoods,setReloadFoods)}>
@@ -109,7 +110,7 @@ const createTable = (fetchedJournalDay,reloadFoods,setReloadFoods) => {
 
 const deleteFood = (foodId, dayDate, reloadFoods, setReloadFoods) =>{
     // dayDate="";
-    console.log(`id:${foodId}, dayDate:${dayDate}`);
+    // console.log(`id:${foodId}, dayDate:${dayDate}`);
     axios.delete(BACKEND+ "/foods", {data:{
         dayDate:dayDate,
         id:foodId
@@ -117,7 +118,7 @@ const deleteFood = (foodId, dayDate, reloadFoods, setReloadFoods) =>{
     headers:{
         'auth-token' : localStorage.getItem("token")
     }}).then((response)=>{
-        console.log(response);
+        // console.log(response);
         setReloadFoods(reloadFoods+1);
     })
 }

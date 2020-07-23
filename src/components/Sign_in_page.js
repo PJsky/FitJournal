@@ -34,17 +34,17 @@ export default function Sign_in_page(){
                <div className="sign-in-page-header">Sign in to Your account</div>
                
                <Formik
-                initialValues={{ email:'', password:'' }}
+                initialValues={{ email:'abcd@example.com', password:'123123321' }}
                 validationSchema={SigninSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                    console.log(values['email']);
-                    console.log(values['password']);
+                    // console.log(values['email']);
+                    // console.log(values['password']);
                     axios.post(BACKEND+"/user/login", {
                         email: values['email'],
                         password: values['password']
                     }).then(({data,status})=>{
-                        console.log(data);
+                        // console.log(data);
                         setSubmitting(false);
                         localStorage.setItem("token", data)
                         if(status==200) {
